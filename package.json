@@ -1,0 +1,32 @@
+{
+  "name": "insuranceinventoryapp",
+  "version": "1.0.0",
+  "description": "App to manage musical instruments to keep track of details for insurance",
+  "main": "./src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev" : "nodemon ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mikepcann/InsuranceInventoryApp.git"
+  },
+  "keywords": [
+    "node",
+    "js",
+    "instruments",
+    "inventoryManagement"
+  ],
+  "author": "Mike Cann",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mikepcann/InsuranceInventoryApp/issues"
+  },
+  "homepage": "https://github.com/Mikepcann/InsuranceInventoryApp#readme",
+  "dependencies": {
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  }
+}
