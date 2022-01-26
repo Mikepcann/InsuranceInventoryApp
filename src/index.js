@@ -2,7 +2,6 @@ import './env.js'
 import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import bodyParser from 'body-parser'
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -14,19 +13,23 @@ const USER = 'email@example.com'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-console.log('path.join: ' + path.join(__dirname, '/views'))
-console.log('path: ' + __dirname)
+// console.log('path.join: ' + path.join(__dirname, 'public/style.css'))
+// console.log('path: ' + __dirname)
 
 // Configure Template Engine
-app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, '/views'))
+app.set('view engine', 'ejs')
+
+// Set up static pages
+app.use(express.static(path.join(__dirname + '/public/')))
+
 
 // register middleware
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(express.urlencoded({extended: true}))
+app.use(express.json())
 
 app.get('/', (req, res) => {
-    res.render('pages/login')
+    res.render('pages/login', { title: 'Login'})
 })
 
 app.post('/login', (req, res) => {
@@ -35,7 +38,7 @@ app.post('/login', (req, res) => {
     const { email } = req.body
      
     if( USER === email && PWORD === password) {
-        res.render('pages/home', {user: email})
+        res.render('pages/home', {user: email, title: 'Home'})
        return 
     }
     res.status(403).send('FORBIDDEN')
