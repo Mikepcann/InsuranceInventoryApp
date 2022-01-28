@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url'
 
 const app = express()
 const port = process.env.PORT || 3000
+app.disable('x-powered-by')
 
 const PWORD ='password'
 const USER = 'email@example.com'
